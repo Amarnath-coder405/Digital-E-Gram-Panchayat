@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>E-Gram Panchayat — User Dashboard</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="E-Gram Panchayat user dashboard — search services, apply, track status, profile & logout.">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand" data-aos="fade-right">
+        <img src="logo.png" alt="E-Gram Logo" class="brand-logo" loading="lazy">
+        <div class="brand-text">
+          <strong>E-Gram</strong>
+          <small>Panchayat</small>
+        </div>
+      </div>
+
+      <nav class="side-nav" role="navigation" aria-label="Main">
+        <ul>
+          <li><a href="#" class="side-link active" data-target="panel-services"><i class="fa fa-search"></i><span>Search Services</span></a></li>
+          <li><a href="#" class="side-link" data-target="panel-apps"><i class="fa fa-file-alt"></i><span>My Applications</span></a></li>
+          <li><a href="#" class="side-link" data-target="panel-profile"><i class="fa fa-user"></i><span>My Profile</span></a></li>
+          <li><a href="login.html" class="side-link logout"><i class="fa fa-sign-out-alt"></i><span>Logout</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+
+      <!-- Topbar -->
+      <header class="topbar" data-aos="fade-down">
+        <button id="mobileMenuBtn" class="icon-btn" aria-label="Toggle menu"><i class="fa fa-bars"></i></button>
+
+        <div class="search-wrap" role="search">
+          <input id="searchInput" class="search-input" type="search" placeholder="Search services (e.g. birth certificate)" aria-label="Search services">
+          <button id="clearSearch" class="icon-btn" title="Clear search" aria-label="Clear search"><i class="fa fa-times"></i></button>
+        </div>
+
+        <div class="profile-mini" aria-hidden="true">
+          <img src="logo.png" alt="avatar" loading="lazy">
+        </div>
+      </header>
+
+      <div class="content">
+
+        <!-- SERVICES PANEL -->
+        <section id="panel-services" class="panel active" data-aos="fade-up">
+          <div class="panel-head">
+            <h2>Available Services</h2>
+            <p class="muted">Browse services and apply directly. Click <strong>Details</strong> to expand the service description.</p>
+          </div>
+
+          <div id="servicesList" class="cards" aria-live="polite"></div>
+        </section>
+
+        <!-- APPLICATIONS PANEL -->
+        <section id="panel-apps" class="panel" data-aos="fade-up" aria-labelledby="appsHeading">
+          <div class="panel-head">
+            <h2 id="appsHeading">My Applications</h2>
+            <p class="muted">Track the status of your submitted applications.</p>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table" id="appsTable" aria-describedby="appsDesc">
+              <caption id="appsDesc" class="sr-only">Your submitted applications and their statuses</caption>
+              <thead>
+                <tr>
+                  <th>App ID</th>
+                  <th>Service</th>
+                  <th>Submitted</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody><!-- populated dynamically --></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- PROFILE PANEL -->
+        <section id="panel-profile" class="panel" data-aos="fade-up" aria-labelledby="profileHeading">
+          <div class="panel-head">
+            <h2 id="profileHeading">My Profile</h2>
+            <p class="muted">Update your personal details. Fields are responsive and well aligned.</p>
+          </div>
+
+          <form id="profileForm" class="form" novalidate>
+            <div class="grid">
+              <label class="field"><span>Full name</span><input id="profileName" type="text" required></label>
+              <label class="field"><span>Email</span><input id="profileEmail" type="email" required></label>
+              <label class="field"><span>Mobile</span><input id="profileMobile" type="tel" required></label>
+              <label class="field"><span>Date of Birth</span><input id="profileDob" type="date"></label>
+              <label class="field"><span>Gender</span>
+                <select id="profileGender">
+                  <option value="">Select</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label class="field"><span>Address</span><input id="profileAddress" type="text"></label>
+              <label class="field"><span>ID Number (Aadhaar/Voter)</span><input id="profileIdNo" type="text"></label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary"><i class="fa fa-save"></i> Save Profile</button>
+              <button type="button" id="profileReset" class="btn outline">Reset</button>
+            </div>
+
+            <div id="profileMsg" class="msg" role="status" aria-live="polite"></div>
+          </form>
+        </section>
+
+      </div> <!-- /.content -->
+    </main>
+
+  </div> <!-- /.app -->
+
+  <!-- APPLY SLIDE-IN PANEL -->
+  <aside id="applyPanel" class="apply-panel" aria-hidden="true" aria-labelledby="applyTitle">
+    <div class="apply-card" role="dialog" aria-modal="true">
+      <button id="closeApply" class="close" aria-label="Close"><i class="fa fa-times"></i></button>
+      <h3 id="applyTitle">Apply for Service</h3>
+
+      <form id="applyForm" class="form" novalidate>
+        <input type="hidden" id="applyServiceId" />
+
+        <div class="grid-2">
+          <label class="field"><span>Full name</span><input id="appFullName" type="text" required></label>
+          <label class="field"><span>Email</span><input id="appEmail" type="email" required></label>
+        </div>
+
+        <div class="grid-2">
+          <label class="field"><span>Mobile</span><input id="appMobile" type="tel" required></label>
+          <label class="field"><span>Date of Birth</span><input id="appDob" type="date"></label>
+        </div>
+
+        <label class="field"><span>Address</span><input id="appAddress" type="text"></label>
+
+        <div class="grid-2">
+          <label class="field"><span>Gender</span>
+            <select id="appGender">
+              <option value="">Select</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+
+          <label class="field"><span>ID Number</span><input id="appIdNo" type="text" placeholder="Aadhaar / Voter ID"></label>
+        </div>
+
+        <label class="field"><span>Upload Document (optional)</span>
+          <input id="appDocument" type="file" accept=".jpg,.jpeg,.png,.pdf" />
+          <small class="muted">File is recorded client-side for demo. Use server upload in production.</small>
+        </label>
+
+        <label class="field"><span>Note / Reason</span><textarea id="appNote" rows="3"></textarea></label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary"><i class="fa fa-paper-plane"></i> Submit Application</button>
+          <button type="button" id="cancelApply" class="btn outline">Cancel</button>
+        </div>
+
+        <div id="applyMsg" class="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+  <script src="script.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AOS) AOS.init({ once: true, duration: 650, easing: 'ease-out-cubic' });
+    });
+  </script>
+</body>
+</html>

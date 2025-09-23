@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Gram Panchayat</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <div class="auth-container" id="authCard">
+
+      <!-- Logo -->
+      <div class="logo">
+        <img src="assets/panchayat.jpg" alt="E-Gram Panchayat Logo" loading="lazy">
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="form active" action="javascript:void(0);">
+        <h2>Welcome to E-Gram Panchayat</h2>
+        <p class="subtext">Select role and login</p>
+
+        <div class="message-box error-message" id="loginError"></div>
+        <div class="message-box success-message" id="loginSuccess"></div>
+
+        <div class="input-group">
+          <i class="fa fa-users icon"></i>
+          <select id="loginRole" required>
+            <option value="">-- Select Role --</option>
+            <option value="admin">Administrator</option>
+            <option value="officer">Panchayat Officer</option>
+            <option value="citizen">Citizen / User</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-user icon"></i>
+          <input type="text" id="loginUsername" placeholder="User ID" required>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-lock icon"></i>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+          <i class="fa fa-eye toggle-password" data-target="loginPassword"></i>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+
+        <p class="switch-link">Forgot password? 
+          <a href="#" id="showForgot">Reset here</a>
+        </p>
+        <p class="switch-link">New user? 
+          <a href="#" id="showSignup">Create an account</a>
+        </p>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signupForm" class="form" action="javascript:void(0);">
+        <h2>Register</h2>
+        <p class="subtext">Fill details to create an account</p>
+
+        <div class="message-box error-message" id="signupError"></div>
+        <div class="message-box success-message" id="signupSuccess"></div>
+
+        <div class="input-group">
+          <i class="fa fa-users icon"></i>
+          <select id="signupRole" required>
+            <option value="">-- Select Role --</option>
+            <option value="admin">Administrator</option>
+            <option value="officer">Panchayat Officer</option>
+            <option value="citizen">Citizen / User</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-id-card icon"></i>
+          <input type="text" id="signupName" placeholder="Full Name" required>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-envelope icon"></i>
+          <input type="email" id="signupEmail" placeholder="Email / Mobile" required>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-user icon"></i>
+          <input type="text" id="signupUsername" placeholder="Choose User ID" required>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-lock icon"></i>
+          <input type="password" id="signupPassword" placeholder="Password" required>
+          <i class="fa fa-eye toggle-password" data-target="signupPassword"></i>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-lock icon"></i>
+          <input type="password" id="signupConfirm" placeholder="Confirm Password" required>
+          <i class="fa fa-eye toggle-password" data-target="signupConfirm"></i>
+        </div>
+
+        <button type="submit" class="login-btn">Register</button>
+
+        <p class="switch-link">Already have an account? 
+          <a href="#" id="showLogin">Login here</a>
+        </p>
+      </form>
+
+      <!-- Forgot Password Form -->
+      <form id="forgotForm" class="form" action="javascript:void(0);">
+        <h2>Reset Password</h2>
+        <p class="subtext">Enter your email/mobile to reset</p>
+
+        <div class="message-box error-message" id="forgotError"></div>
+        <div class="message-box success-message" id="forgotSuccess"></div>
+
+        <div class="input-group">
+          <i class="fa fa-envelope icon"></i>
+          <input type="email" id="forgotEmail" placeholder="Registered Email / Mobile" required>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-lock icon"></i>
+          <input type="password" id="forgotPassword" placeholder="New Password" required>
+          <i class="fa fa-eye toggle-password" data-target="forgotPassword"></i>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-lock icon"></i>
+          <input type="password" id="forgotConfirm" placeholder="Confirm New Password" required>
+          <i class="fa fa-eye toggle-password" data-target="forgotConfirm"></i>
+        </div>
+
+        <button type="submit" class="login-btn">Reset Password</button>
+
+        <p class="switch-link">Remembered? 
+          <a href="#" id="backToLogin">Go to Login</a>
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

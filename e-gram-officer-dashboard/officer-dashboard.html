@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E-Gram Panchayat Staff Dashboard</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" data-aos="fade-right">
+      <h2 class="logo">E-Gram Staff</h2>
+      <nav>
+        <button class="nav-btn active" data-target="services"><i class="fa fa-list"></i><span>View Services</span></button>
+        <button class="nav-btn" data-target="update"><i class="fa fa-edit"></i><span>Update Status</span></button>
+        <button class="nav-btn logout" data-target="logout"><i class="fa fa-sign-out-alt"></i><span>Logout</span></button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="topbar" data-aos="fade-down">
+        <h1>Staff Dashboard</h1>
+      </header>
+
+      <section class="container">
+        <!-- View Services Panel -->
+        <section id="panel-services" class="panel active" data-aos="fade-up">
+          <h2>Available Services</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Certificate Issuance</h3>
+              <p>Apply for official certificates</p>
+            </article>
+            <article class="card">
+              <h3>License Application</h3>
+              <p>Submit or renew licenses</p>
+            </article>
+            <article class="card">
+              <h3>Tax Payment</h3>
+              <p>Pay local taxes online</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Update Status Panel -->
+        <section id="panel-update" class="panel" data-aos="fade-up">
+          <h2>Update Application Status</h2>
+          <form id="statusForm" novalidate>
+            <div class="form-row">
+              <label for="appId">Application ID</label>
+              <input id="appId" name="appId" placeholder="Enter numeric ID" />
+            </div>
+            <div class="form-row">
+              <label for="newStatus">New Status</label>
+              <select id="newStatus" name="newStatus">
+                <option value="">Select status</option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </div>
+            <div class="form-row actions">
+              <button type="submit" class="btn primary">Update</button>
+              <button type="reset" class="btn">Reset</button>
+            </div>
+            <div id="statusMsg" class="status-msg" aria-live="polite"></div>
+          </form>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

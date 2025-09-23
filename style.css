@@ -1,0 +1,100 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body,html { height:100%; font-family:"Segoe UI",sans-serif; }
+
+/* Wrapper */
+.auth-wrapper {
+  display:flex; justify-content:center; align-items:center;
+  height:100vh;
+  background:url("assets/panchayat.jpg") no-repeat center/cover;
+  position:relative;
+}
+.auth-wrapper::before {
+  content:""; position:absolute; inset:0;
+  background:rgba(0,0,0,0.55);
+}
+
+/* Card */
+.auth-container {
+  position:relative;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  padding:2rem;
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  width:100%; max-width:400px;
+  z-index:2; text-align:center; color:#fff;
+  animation:fadeIn 0.6s ease;
+}
+
+/* Logo */
+.logo img { width:70px; margin-bottom:1rem; border-radius: 50%; }
+
+/* Forms */
+.form { display:none; animation:fadeForm 0.5s ease; }
+.form.active { display:block; }
+
+h2 { margin-bottom:0.5rem; }
+.subtext { font-size:14px; margin-bottom:1rem; color:#ddd; }
+
+/* Input group */
+.input-group {
+  position:relative; margin-bottom:1.2rem;
+}
+.input-group .icon {
+  position:absolute; left:12px; top:50%;
+  transform:translateY(-50%);
+  color:#777; font-size:14px;
+}
+.input-group input,
+.input-group select {
+  width:100%; padding:12px 40px;
+  border-radius:10px; border:none;
+  background:rgba(255,255,255,0.9);
+  font-size:15px; color:#333;
+}
+.input-group input:focus,
+.input-group select:focus {
+  outline:none; box-shadow:0 0 6px #00c6ff;
+}
+
+/* Toggle password */
+.toggle-password {
+  position:absolute; right:12px; top:50%;
+  transform:translateY(-50%);
+  color:#555; cursor:pointer;
+}
+
+/* Buttons */
+.login-btn {
+  width:100%; padding:12px;
+  border:none; border-radius:10px;
+  background:linear-gradient(135deg,#56ab2f,#a8e063);
+  color:#fff; font-size:16px; font-weight:bold;
+  cursor:pointer;
+  transition:transform 0.2s, box-shadow 0.3s;
+}
+.login-btn:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,0.3); }
+
+.switch-link { margin-top:15px; font-size:14px; }
+.switch-link a { color:#00c6ff; text-decoration:none; }
+.switch-link a:hover { text-decoration:underline; }
+
+/* Messages */
+.message-box {
+  display:none; padding:10px; margin-bottom:1rem;
+  border-radius:8px; font-size:14px;
+}
+.error-message { background:rgba(255,77,77,0.9); color:#fff; }
+.success-message { background:rgba(40,167,69,0.9); color:#fff; }
+
+/* Animations */
+@keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+@keyframes fadeForm { from{opacity:0;} to{opacity:1;} }
+@keyframes shake { 20%,60%{transform:translateX(-8px);} 40%,80%{transform:translateX(8px);} }
+.shake { animation:shake 0.4s; }
+@keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
+.pulse { animation:pulse 0.6s; }
+
+/* Responsive */
+@media(max-width:480px){ .auth-container{ padding:1.5rem; max-width:90%; } }

@@ -1,6 +1,6 @@
-# E-Services for Gram Panchayat
+# E-Services for Gram Panchayat:
 
-## Project Overview
+# Project Overview:
 
 This project aims to improve the delivery of citizen services in rural areas by digitizing the application and approval process for Gram Panchayat services. Gram Panchayats are decentralized local government bodies responsible for delivering various public services. Traditionally, many of these services require physical presence, paperwork, and manual tracking, which can lead to inefficiencies..
 

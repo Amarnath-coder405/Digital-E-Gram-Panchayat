@@ -6,7 +6,7 @@ This project aims to improve the delivery of citizen services in rural areas by 
 
 The proposed system, E-Services for Gram Panchayat, introduces a web-based platform where citizens can apply for different government schemes and services online. Administrators and staff can manage, process, and track these applications through a centralized dashboard.
 
-## Objective
+# Objective
 
 The primary goal of this project is to create an efficient and transparent service delivery system by:
 

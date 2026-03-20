@@ -15,7 +15,8 @@ The primary goal of this project is to create an efficient and transparent servi
 - Ensuring better communication between the Gram Panchayat and citizens.
 - Enabling tracking of application status and improving accountability.
 
-## Key Features
+## Key Features:
+================
 
 - Online registration and login for public users
 - Citizens can submit applications for various services and schemes

@@ -27,7 +27,7 @@ The primary goal of this project is to create an efficient and transparent servi
 - Secure authentication and role-based access control
 - Responsive design for use on desktops, tablets, and mobile devices
 
-## User Roles
+## User Roles:
 
 - **Admin**
   - Create and manage services/schemes

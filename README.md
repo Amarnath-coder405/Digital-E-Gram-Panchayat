@@ -28,6 +28,7 @@ The primary goal of this project is to create an efficient and transparent servi
 - Responsive design for use on desktops, tablets, and mobile devices
 
 ## User Roles:
+==============
 
 - **Admin**
   - Create and manage services/schemes
